@@ -15,3 +15,8 @@ steps for follow along:
   * build the image and create the container out of it. `az container create --name acrtaskscontainer --resource-group experiments --image {acrName}.azurecr.io/acr-tasks:1.0 --registry-login-server {acrName}.azurecr.io --registry-username $(az keyvault secret show --vault-name {keyVaultName} 
 --name acrexperiment-pull-user --output tsv --query value) --registry-password $(az keyvault secret show --vault-name {keyVaultName} --name acrexperiment-pull-password --output tsv --query value) --dns-name-label acrtasks --query "{FQDN:ipAddress.fqdn}" --output table`
   * verify that the 'getting started' guide is now available at the domain which was printed as output (eg: acrtasks.westus.azurecontainer.io)
+
+* create a GitHub PAT (Personal Access Token) to allow the ACR taks to authenticate
+* create the ACR Task, `az acr task create --registry {acrName} --resource-group {resourceGroupName --name acrtaskgettingstarted --image acr-tasks:1.0 --context https://github.com/{userName}/acr-tasks.git --file Dockerfile --git-access-token {pat}`
+* test the created build task, `az acr task run --registry {acrName} --resource-group {resourceGroupName} --name acrtaskgettingstarted`
+* now test the full pipeline by perfomring a new commit to the repository, so that an automated build will be triggered
