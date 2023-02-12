@@ -1,6 +1,6 @@
-##Azure Container Registry Tasks with a docker starter template
+### Azure Container Registry Tasks with a docker starter template
 
-steps
+steps for follow along:
 * create the Dockerfile with the required base image
 * build the image with 'docker build -t acr-tasks:1.0
 * run the image as a container to test the same. 'docker run -p 80:80 -d acr-tasks:1.0'
