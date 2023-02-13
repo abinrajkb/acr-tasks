@@ -24,6 +24,8 @@ steps for follow along:
 
 Now we have succesfully configured the ACR Task, so that whenever there we push any update to the GitHub, the changes will be pulled automatically and a new build will be generated out of it and saved, so that we can deploy the same in the next step of continuous deployment stage.
 
-TODO:
-
-integrate App services (containers) with continuous deployment configured.
+* Continuous Deployment Configurations
+ * create an Azure App service webapp with the source as our image in the ACR
+ * enable the 'continuous deployment' option in 'deployment center' 
+ * ensure that a webhook has been added automatically in our created ACR instance
+ * add a new commit in this repository, which would trigger a new task, which in turn would trigger a deployment to our web app
